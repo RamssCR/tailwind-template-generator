@@ -26,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: npm ci --silent
 
-      - name: Build package
-        run: npm run build
+      - name: Generate Declaration Files
+        run: npm run prepublish
 
       - name: Publish to NPM
         run: npm publish --access public
