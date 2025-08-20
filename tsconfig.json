@@ -5,8 +5,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths": {
-      "#*": ["lib/*"]
+    "paths": { 
+      "#*": ["lib/*"] 
     },
 
     // To work with JavaScript
@@ -28,6 +28,6 @@
     "noEmitOnError": true,
     "noUnusedLocals": true
   },
-  "include": ["lib"],
+  "include": ["lib", "test"],
   "exclude": ["node_modules", "dist", "types"]
 }
