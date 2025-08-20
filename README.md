@@ -1,5 +1,8 @@
 # Tailwind Template Generator
 
+![Pull Request Automation](https://github.com/RamssCR/tailwind-template-generator/actions/workflows/unit-testing.yaml/badge.svg)
+![Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen)
+
 ---
 
 `tailwind-template-generator` is a tailwind-focused library that provides a CLI to generate a CSS file based on a 
