@@ -88,7 +88,7 @@ Here's a basic example of how your JSON should look like:
 
 Then, locate it where best suits inside your project (e.g., `src/data/colorPalette.json`) and run the following command afterwards:
 ```BASH
-npx tailwind-template-generator generate src/data/collorPalette.json --out src/index.css # or globals.css, for example...
+npx tailwind-template-generator generate src/data/colorPalette.json --out src/index.css # or globals.css, for example...
 ```
 
 A CSS file with the provided name will be output in the specified directory.

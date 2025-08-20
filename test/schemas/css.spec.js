@@ -9,7 +9,7 @@ describe('CSS Schema', () => {
   })
 
   test('invalidates a style object with missing properties', () => {
-    const result = schema.safeParse({ nonExistantProperty: 'value' })
+    const result = schema.safeParse({ nonExistentProperty: 'value' })
     expect(result.success).toBe(false)
   })
 })
