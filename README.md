@@ -6,7 +6,7 @@
 ---
 
 `tailwind-template-generator` is a tailwind-focused library that provides a CLI to generate a CSS file based on a 
-structured JSON file with the main pallete (`primary`, `secondary`, `terciary` being optional), a theme (`light` 
+structured JSON file with the main palette (`primary`, `secondary`, `tertiary` being optional), a theme (`light` 
 and `dark`) and the design tokens (`bg`, `contrast`, `accent`, `foreground` and `muted`)
 
 Its main purpose is to avoid boilerplate when starting a new frontend project using TailwindCSS by providing it
@@ -86,9 +86,9 @@ Here's a basic example of how your JSON should look like:
 }
 ```
 
-Then, locate it where best suites inside your project (e.g., `src/data/colorPallete.json`) and run the following command afterwards:
+Then, locate it where best suits inside your project (e.g., `src/data/colorPalette.json`) and run the following command afterwards:
 ```BASH
-npx tailwind-template-generator generate src/data/collorPallete.json --out src/index.css # or globals.css, for example...
+npx tailwind-template-generator generate src/data/collorPalette.json --out src/index.css # or globals.css, for example...
 ```
 
 A CSS file with the provided name will be output in the specified directory.
@@ -109,9 +109,9 @@ generate the proper CSS file. Below here is displayed a list of mandatory and op
 |---------------------|----------------|
 | `primary`           | Yes            |
 | `secondary`         | Yes            |
-| `terciary`          | No             |
-| `[pallete].light`   | Yes            |
-| `[pallete].dark`    | No             |
+| `tertiary`          | No             |
+| `[palette].light`   | Yes            |
+| `[palette].dark`    | No             |
 
 > [!NOTE]
 > While not mandatory, you can provide a JSON schema with a `primary` object with all mandatory/optional properties and a `secondary` object with just light colors. However, it's recommended to keep consistency on both sides by providing the same amount of properties.
