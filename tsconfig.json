@@ -13,10 +13,11 @@
     "allowJs": true,
     "checkJs": true,
 
-    // Generar solo archivos .d.ts
+    // Generate .d.ts files only
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "types",
+    "outDir": "dist",
 
     // To support modern import/export
     "esModuleInterop": true,
@@ -28,6 +29,6 @@
     "noEmitOnError": true,
     "noUnusedLocals": true
   },
-  "include": ["lib", "test"],
+  "include": ["lib", "test", "bin"],
   "exclude": ["node_modules", "dist", "types"]
 }

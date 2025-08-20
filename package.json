@@ -9,8 +9,17 @@
   "scripts": {
     "start:dev": "node ./bin/index.js",
     "test": "vitest --watch --reporter=default --reporter=html",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "build": "tsc --emitDeclarationOnly && tsc-alias",
+    "prepublish": "npm run build"
   },
+  "files": [
+    "lib/",
+    "bin/",
+    "dist/",
+    "*.d.ts"
+  ],
+  "types": "./types/index.d.ts",
   "keywords": [
     "tailwind",
     "css",
@@ -26,6 +35,8 @@
     "@vitest/ui": "^3.2.4",
     "eslint-plugin-tailwindcss": "^3.18.2",
     "prettier": "^3.6.2",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "imports": {
