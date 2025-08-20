@@ -24,7 +24,8 @@ export default defineConfig({
         '**/*.config.js',
         'scripts/**',
         'coverage/**',
-        'html/**'
+        'html/**',
+        'types/**'
       ]
     }
   }
