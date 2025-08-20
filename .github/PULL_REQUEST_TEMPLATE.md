@@ -3,11 +3,11 @@ Describe all changes made here.
 
 ## Change type
 
-- [] New Feature
-- [] Error fix
-- [] Performance enhancement
-- [] Refactor
-- [] Other (specify)
+- [ ] New Feature
+- [ ] Error fix
+- [ ] Performance enhancement
+- [ ] Refactor
+- [ ] Other (specify)
 
 ## Checklist
 
