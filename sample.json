@@ -1,34 +1,50 @@
 {
   "primary": {
     "light": {
-      "bg": "#ffffff",
-      "contrast": "#000000",
-      "accent": "#ff0000",
-      "foreground": "#1a1a1a",
-      "muted": "#f0f0f0"
+      "bg": "oklch(99% 0.01 240)",
+      "contrast": "oklch(30% 0.01 240)",
+      "accent": "oklch(70% 0.18 30)",
+      "foreground": "oklch(40% 0.05 240)",
+      "muted": "oklch(95% 0.02 240)"
     },
     "dark": {
-      "bg": "#111827",
-      "contrast": "#f9fafb",
-      "accent": "#3b82f6",
-      "foreground": "#e5e7eb",
-      "muted": "#1f2937"
+      "bg": "oklch(20% 0.02 240)",
+      "contrast": "oklch(98% 0.01 240)",
+      "accent": "oklch(60% 0.20 250)",
+      "foreground": "oklch(90% 0.03 240)",
+      "muted": "oklch(25% 0.03 240)"
     }
   },
   "secondary": {
     "light": {
-      "bg": "#f0f0f0",
-      "contrast": "#1a1a1a",
-      "accent": "#00ff00",
-      "foreground": "#2a2a2a",
-      "muted": "#e0e0e0"
+      "bg": "oklch(97% 0.01 120)",
+      "contrast": "oklch(35% 0.01 120)",
+      "accent": "oklch(80% 0.18 140)",
+      "foreground": "oklch(45% 0.05 120)",
+      "muted": "oklch(92% 0.02 120)"
     },
     "dark": {
-      "bg": "#1f2937",
-      "contrast": "#e5e7eb",
-      "accent": "#a855f7",
-      "foreground": "#f9fafb",
-      "muted": "#111827"
+      "bg": "oklch(22% 0.02 120)",
+      "contrast": "oklch(95% 0.01 120)",
+      "accent": "oklch(65% 0.20 140)",
+      "foreground": "oklch(92% 0.03 120)",
+      "muted": "oklch(28% 0.03 120)"
+    }
+  },
+  "tertiary": {
+    "light": {
+      "bg": "oklch(98% 0.01 320)",
+      "contrast": "oklch(32% 0.01 320)",
+      "accent": "oklch(75% 0.18 340)",
+      "foreground": "oklch(42% 0.05 320)",
+      "muted": "oklch(94% 0.02 320)"
+    },
+    "dark": {
+      "bg": "oklch(18% 0.02 320)",
+      "contrast": "oklch(97% 0.01 320)",
+      "accent": "oklch(62% 0.20 340)",
+      "foreground": "oklch(88% 0.03 320)",
+      "muted": "oklch(23% 0.03 320)"
     }
   }
 }
