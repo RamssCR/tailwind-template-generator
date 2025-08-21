@@ -13,9 +13,8 @@ describe('CSS Generator', () => {
     expect(typeof result).toBe('string')
   })
 
-  test('generates valid CSS from style object with dark theme only', () => {
-    // @ts-expect-error: light theme will always be present
-    const result = generateCSS({ primary: { dark: mockStyles.primary.dark }, secondary: { dark: mockStyles.secondary.dark } })
+  test('generates a CSS from style object with a dark mode object', () => {
+    const result = generateCSS({ primary: { light: mockStyles.primary.light, dark: mockStyles.primary.dark }, secondary: { light: mockStyles.secondary.light } })
     expect(typeof result).toBe('string')
   })
 })
