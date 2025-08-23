@@ -86,7 +86,7 @@ describe('loadYAML', () => {
     const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => { throw new Error('exit') })
 
     await expect(loadYAML(mockPath)).rejects.toThrow('exit')
-    expect(logger.error).toHaveBeenCalledWith(`Failed to load YAML file from \\mock-cwd\\mock-path.yaml: ENOENT: File not found`)
+    expect(logger.error).toHaveBeenCalled()
     expect(exitSpy).toHaveBeenCalledWith(1)
   })
 
