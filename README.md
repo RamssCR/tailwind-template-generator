@@ -6,11 +6,11 @@
 ---
 
 `tailwind-template-generator` is a tailwind-focused library that provides a CLI to generate a CSS file based on a 
-structured JSON file with the main palette (`primary`, `secondary`, `tertiary` being optional), a theme (`light` 
+structured JSON/YAML file with the main palette (`primary`, `secondary`, `tertiary` being optional), a theme (`light` 
 and `dark`) and the design tokens (`bg`, `contrast`, `accent`, `foreground` and `muted`)
 
 Its main purpose is to avoid boilerplate when starting a new frontend project using TailwindCSS by providing it
-a structured JSON file (preferably inside your project, like the root or an alternate directory like `src/data/**`)
+a structured JSON/YAML file (preferably inside your project, like the root or an alternate directory like `src/data/**`)
 and it creates a CSS file with basic Tailwind 4 features like `@import` and `@custom-variant` set to dark for dark mode.
 
 ---
@@ -93,17 +93,51 @@ npx tailwind-template-generator generate src/data/colorPalette.json --out src/in
 
 A CSS file with the provided name will be output in the specified directory.
 
+## YAML Files
+You can also use YAML files to generate a CSS output similar to using a JSON file by following a similar structure:
+
+```YAML
+primary:
+  light:
+    bg: "oklch(99% 0.01 240)"
+    contrast: "oklch(30% 0.01 240)"
+    accent: "oklch(70% 0.18 30)"
+    foreground: "oklch(40% 0.05 240)"
+    muted: "oklch(95% 0.02 240)"
+  dark:
+    bg: "oklch(20% 0.02 240)"
+    contrast: "oklch(99% 0.01 240)"
+    accent: "oklch(60% 0.20 250)"
+    foreground: "oklch(40% 0.05 240)"
+    muted: "oklch(25% 0.03 240)"
+secondary:
+  light:
+    bg: "oklch(98% 0.01 320)"
+    contrast: "oklch(32% 0.01 320)"
+    accent: "oklch(75% 0.18 340)"
+    foreground: "oklch(42% 0.05 320)"
+    muted: "oklch(94% 0.02 320)"
+  dark:
+    bg: "oklch(18% 0.02 320)"
+    contrast: "oklch(97% 0.01 320)"
+    accent: "oklch(62% 0.20 340)"
+    foreground: "oklch(88% 0.03 320)"
+    muted: "oklch(23% 0.03 320)"
+```
+
+> [!NOTE]
+> You can use YAML files having both `.yaml` and `.yml` file extensions.
+
 ## CLI
 ### `generate [source] --out [output]`
-`generate` is used to generate the CSS file based on the provided JSON and receives two parameters:
-- `source`: The origin of your JSON file inside your project.
+`generate` is used to generate the CSS file based on the provided JSON/YAML and receives two parameters:
+- `source`: The origin of your JSON/YAML file inside your project.
 - `output`: An existing directory to output your parsed CSS file.
 
 > [!WARNING]
-> The CLI throws an error when the source file does not exist, when the source file does not follow the schema in the example provided above at the [usage](#usage) section and when the output directory does not exist.
+> The CLI throws an error when the source file does not exist, when the source file does not follow the schema in the examples provided above at the [usage](#usage) section and when the output directory does not exist.
 
-`tailwind-template-generator` uses `zod` under the hood to validate that the provided JSON follows a specific schema so your JSON can be used to
-generate the proper CSS file. Below here is displayed a list of mandatory and optional parameters your JSON must follow at least:
+`tailwind-template-generator` uses `zod` under the hood to validate that the provided JSON/YAML follows a specific schema so your JSON/YAML can be used to generate the proper CSS file. Below here is displayed a list of mandatory and optional parameters your JSON/YAML file must follow at least:
 
 | Property            | Mandatory      |
 |---------------------|----------------|
@@ -114,12 +148,11 @@ generate the proper CSS file. Below here is displayed a list of mandatory and op
 | `[palette].dark`    | No             |
 
 > [!NOTE]
-> While not mandatory, you can provide a JSON schema with a `primary` object with all mandatory/optional properties and a `secondary` object with just light colors. However, it's recommended to keep consistency on both sides by providing the same amount of properties.
+> While not mandatory, you can provide a JSON/YAML schema with a `primary` object with all mandatory/optional properties and a `secondary` object with just light colors. However, it's recommended to keep consistency on both sides by providing the same amount of properties.
 
 
 ## TypeScript
-This library was made entirely using vanilla JS but also using a `tsconfig.json` file to generate all `.d.ts` files needed if the library 
-provides an in-code resource.
+This library was made entirely using vanilla JS but also using a `tsconfig.json` file to generate all `.d.ts` files needed if the library provides an in-code resource (in the future).
 
 ## Tests
 In order to run the library's tests, you can run the following command on your console:

@@ -1,10 +1,15 @@
 import { describe, expect, test, vi } from 'vitest'
 import { loadJSON } from '#loaders/json.js'
+import { loadYAML } from '#loaders/yaml.js'
 import { parseToken } from '#helpers/parseToken.js'
 import { logger } from '#utils/logger.js'
 
 vi.mock('#loaders/json.js', () => ({
   loadJSON: vi.fn(),
+}))
+
+vi.mock('#loaders/yaml.js', () => ({
+  loadYAML: vi.fn(),
 }))
 
 vi.mock('#utils/logger.js', () => ({
@@ -19,6 +24,18 @@ describe('parseToken', () => {
     const mockPath = 'theme.json'
     await parseToken(mockPath)
     expect(loadJSON).toHaveBeenCalledWith(mockPath)
+  })
+
+  test('calls loadYAML with the correct path (case for .yaml files)', async () => {
+    const mockPath = 'theme.yaml'
+    await parseToken(mockPath)
+    expect(loadYAML).toHaveBeenCalledWith(mockPath)
+  })
+
+  test('calls loadYAML with the correct path (case for .yml files)', async () => {
+    const mockPath = 'theme.yml'
+    await parseToken(mockPath)
+    expect(loadYAML).toHaveBeenCalledWith(mockPath)
   })
 
   test('calls loadJSON with an incorrect path', async () => {
