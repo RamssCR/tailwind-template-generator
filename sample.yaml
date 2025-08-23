@@ -1,0 +1,26 @@
+primary:
+  light:
+    bg: "oklch(99% 0.01 240)"
+    contrast: "oklch(30% 0.01 240)"
+    accent: "oklch(70% 0.18 30)"
+    foreground: "oklch(40% 0.05 240)"
+    muted: "oklch(95% 0.02 240)"
+  dark:
+    bg: "oklch(20% 0.02 240)"
+    contrast: "oklch(99% 0.01 240)"
+    accent: "oklch(60% 0.20 250)"
+    foreground: "oklch(40% 0.05 240)"
+    muted: "oklch(25% 0.03 240)"
+secondary:
+  light:
+    bg: "oklch(98% 0.01 320)"
+    contrast: "oklch(32% 0.01 320)"
+    accent: "oklch(75% 0.18 340)"
+    foreground: "oklch(42% 0.05 320)"
+    muted: "oklch(94% 0.02 320)"
+  dark:
+    bg: "oklch(18% 0.02 320)"
+    contrast: "oklch(97% 0.01 320)"
+    accent: "oklch(62% 0.20 340)"
+    foreground: "oklch(88% 0.03 320)"
+    muted: "oklch(23% 0.03 320)"
