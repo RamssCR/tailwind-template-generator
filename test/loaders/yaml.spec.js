@@ -12,7 +12,6 @@ import { logger } from '#utils/logger.js'
 import { readFile } from 'node:fs/promises'
 import { schema } from '#schemas/css.js'
 import yaml from 'js-yaml'
-import { mockStyles } from 'test/mocks/mockStyles'
 
 vi.mock('node:fs/promises', () => ({
   readFile: vi.fn()
@@ -39,7 +38,6 @@ vi.mock('js-yaml', async (importOriginal) => ({
 describe('loadYAML', () => {
   const mockCwd = "/mock-cwd"
   const mockPath = "mock-path.yaml"
-  const mockResolvedPath = `${mockCwd}/${mockPath}`
 
   beforeEach(() => {
     vi.spyOn(process, 'cwd').mockReturnValue(mockCwd)
