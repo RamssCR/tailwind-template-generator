@@ -97,22 +97,22 @@ describe('figmaFormatter', () => {
   })
 
   test('ignores tokens with invalid name format', () => {
-  const tokens = [
-    { name: 'primary-light-100', value: '#fff', type: 'color' },
-    { name: 'invalidtoken', value: '#000', type: 'color' },
-    { name: 'secondary-light-100', value: '#123', type: 'color' },
-    { name: 'secondary-light-200', value: '#234', type: 'color' },
-    { name: 'secondary-light-300', value: '#345', type: 'color' },
-    { name: 'secondary-light-400', value: '#456', type: 'color' },
-    { name: 'secondary-light-500', value: '#567', type: 'color' },
-    { name: 'primary-light-200', value: '#eee', type: 'color' },
-    { name: 'primary-light-300', value: '#ddd', type: 'color' },
-    { name: 'primary-light-400', value: '#ccc', type: 'color' },
-    { name: 'primary-light-500', value: '#bbb', type: 'color' },
-  ]
+    const tokens = [
+      { name: 'primary-light-100', value: '#fff', type: 'color' },
+      { name: 'invalidtoken', value: '#000', type: 'color' },
+      { name: 'secondary-light-100', value: '#123', type: 'color' },
+      { name: 'secondary-light-200', value: '#234', type: 'color' },
+      { name: 'secondary-light-300', value: '#345', type: 'color' },
+      { name: 'secondary-light-400', value: '#456', type: 'color' },
+      { name: 'secondary-light-500', value: '#567', type: 'color' },
+      { name: 'primary-light-200', value: '#eee', type: 'color' },
+      { name: 'primary-light-300', value: '#ddd', type: 'color' },
+      { name: 'primary-light-400', value: '#ccc', type: 'color' },
+      { name: 'primary-light-500', value: '#bbb', type: 'color' },
+    ]
 
-  const result = figmaFormatter({ tokens })
-  expect(result.primary.light['100']).toBe('#fff')
-})
+    const result = figmaFormatter({ tokens })
+    expect(result.primary.light['100']).toBe('#fff')
+  })
 
 })
