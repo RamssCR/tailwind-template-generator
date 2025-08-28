@@ -1,4 +1,5 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest'
+import { MIN_REQUIRED_PALETTES, REQUIRED_TOKENS } from '#utils/constants.js'
 import { figmaFormatter } from '#utils/formatter.js'
 import { logger } from '#utils/logger.js'
 
@@ -50,7 +51,7 @@ describe('figmaFormatter', () => {
 
     expect(() => figmaFormatter({ tokens })).toThrow('exit')
     expect(logger.error).toHaveBeenCalledWith(
-      'Invalid input: must provide at least two color palettes'
+      `Invalid input: must provide at least ${MIN_REQUIRED_PALETTES} color palettes`
     )
     expect(exitSpy).toHaveBeenCalledWith(1)
   })
@@ -91,7 +92,7 @@ describe('figmaFormatter', () => {
 
     expect(() => figmaFormatter({ tokens })).toThrow('exit')
     expect(logger.error).toHaveBeenCalledWith(
-      "Invalid input: color palette 'primary' mode 'light' must include at least 5 tokens"
+      `Invalid input: color palette 'primary' mode 'light' must include at least ${REQUIRED_TOKENS} tokens`
     )
     expect(exitSpy).toHaveBeenCalledWith(1)
   })
