@@ -13,11 +13,16 @@ Its main purpose is to avoid boilerplate when starting a new frontend project us
 a structured JSON/YAML file (preferably inside your project, like the root or an alternate directory like `src/data/**`)
 and it creates a CSS file with basic Tailwind 4 features like `@import` and `@custom-variant` set to dark for dark mode.
 
+`tailwind-template-generator` has also included support for Figma W3C Design Tokens, following named design tokens pattern rather than
+scales to align with the library's naming conventions for CSS variables.
+
 ---
 
 ## Index
 - [Installation](#installation)
 - [Usage](#usage)
+- [YAML Files](#yaml-files)
+- [W3C Design Tokens](#w3c-design-tokens)
 - [CLI](#cli)
 - [TypeScript](#typescript)
 - [Tests](#tests)
@@ -128,6 +133,40 @@ secondary:
 > [!NOTE]
 > You can use YAML files having both `.yaml` and `.yml` file extensions.
 
+## W3C Design Tokens
+You can also provide JSON files exported from Figma as W3C Design Tokens following naming convention (not scales).
+Your JSON must likely look like this:
+
+```JSON
+{
+  "tokens": [
+    { "name": "primary-light-bg", "value": "oklch(100% 0 0)", "type": "color" },
+    { "name": "primary-light-contrast", "value": "oklch(0% 0 0)", "type": "color" },
+    { "name": "primary-light-muted", "value": "oklch(93.6% 0.012 99.6)", "type": "color" },
+    { "name": "primary-light-accent", "value": "oklch(56.6% 0.207 264.7)", "type": "color" },
+    { "name": "primary-light-foreground", "value": "oklch(36.5% 0.174 264.7)", "type": "color" },
+
+    { "name": "primary-dark-bg", "value": "oklch(8.1% 0.004 0)", "type": "color" },
+    { "name": "primary-dark-contrast", "value": "oklch(100% 0 0)", "type": "color" },
+    { "name": "primary-dark-muted", "value": "oklch(27.2% 0.012 0)", "type": "color" },
+    { "name": "primary-dark-accent", "value": "oklch(56.6% 0.207 264.7)", "type": "color" },
+    { "name": "primary-dark-foreground", "value": "oklch(73.2% 0.164 264.7)", "type": "color" },
+
+    { "name": "secondary-light-bg", "value": "oklch(98.2% 0.004 99.6)", "type": "color" },
+    { "name": "secondary-light-contrast", "value": "oklch(20.5% 0.045 99.6)", "type": "color" },
+    { "name": "secondary-light-muted", "value": "oklch(86.5% 0.012 99.6)", "type": "color" },
+    { "name": "secondary-light-accent", "value": "oklch(63.2% 0.233 328.7)", "type": "color" },
+    { "name": "secondary-light-foreground", "value": "oklch(52.2% 0.207 328.7)", "type": "color" }
+  ]
+}
+```
+
+And by running the following command, you can generate your CSS file:
+
+```BASH
+npx tailwind-template-generator figma src/data/tokens.json --out src/index.css # or globals.css (for example)
+```
+
 ## CLI
 ### `generate [source] --out [output]`
 `generate` is used to generate the CSS file based on the provided JSON/YAML and receives two parameters:
@@ -150,6 +189,11 @@ secondary:
 > [!NOTE]
 > While not mandatory, you can provide a JSON/YAML schema with a `primary` object with all mandatory/optional properties and a `secondary` object with just light colors. However, it's recommended to keep consistency on both sides by providing the same amount of properties.
 
+### `figma [source] --out [output]`
+This command apply the same action as above, this command will only apply to JSON files (only) provided by Figma W3C Design Tokens.
+
+> [!NOTE]
+> This command is only for W3C Design Tokens format. If used with `generate`, it won't generate the CSS file due to schema insconsistency.
 
 ## TypeScript
 This library was made entirely using vanilla JS but also using a `tsconfig.json` file to generate all `.d.ts` files needed if the library provides an in-code resource (in the future).

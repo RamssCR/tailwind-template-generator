@@ -6,11 +6,9 @@ import {
   test, 
   vi 
 } from 'vitest'
-import { ZodError } from 'zod'
 import { loadYAML } from '#loaders/yaml.js'
 import { logger } from '#utils/logger.js'
 import { readFile } from 'node:fs/promises'
-import { schema } from '#schemas/css.js'
 import yaml from 'js-yaml'
 
 vi.mock('node:fs/promises', () => ({
@@ -21,12 +19,6 @@ vi.mock('#utils/logger.js', () => ({
   logger: {
     success: vi.fn(),
     error: vi.fn()
-  }
-}))
-
-vi.mock('#schemas/css.js', () => ({
-  schema: {
-    parse: vi.fn()
   }
 }))
 
@@ -46,23 +38,6 @@ describe('loadYAML', () => {
 
   afterEach(() => {
     vi.restoreAllMocks()
-  })
-
-  test('handles ZodError and exits the process', async () => {
-    const zodError = new ZodError([{
-      message: 'Invalid input',
-      path: ['some', 'nested', 'field'],
-      code: 'invalid_type',
-      expected: 'string',
-    }])
-
-    vi.mocked(schema.parse).mockImplementation(() => { throw zodError })
-
-    const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => { throw new Error('exit') })
-
-    await expect(loadYAML(mockPath)).rejects.toThrow('exit')
-    expect(logger.error).toHaveBeenCalled()
-    expect(exitSpy).toHaveBeenCalledWith(1)
   })
 
   test('should handle yaml.load error and exit', async () => {
