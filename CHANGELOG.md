@@ -5,6 +5,12 @@ All notable updates of this library will be documented on this file.
 This format is based on [Keep a Changelog](https://keepachangelog.com/1.0.0/)
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-09-03
+### Added
+- Included a stylelinter for built-in tailwind colors validation.
+- Added type declaration source for plugin detection (for TypeScript, mostly).
+- Updated the `README` file with the respective new integrations.
+
 ## [1.2.0] - 2025-08-28
 ### Added
 - Added Figma W3C Design Tokens JSON as another colors source to generate the CSS file.
