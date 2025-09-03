@@ -11,6 +11,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Added type declaration source for plugin detection (for TypeScript, mostly).
 - Updated the `README` file with the respective new integrations.
 
+### Removed
+- `stylelint` is no longer required as peerDependency since v1.3.0. The new ESLint plugin works independently using `postcss`.
+
 ## [1.2.0] - 2025-08-28
 ### Added
 - Added Figma W3C Design Tokens JSON as another colors source to generate the CSS file.
