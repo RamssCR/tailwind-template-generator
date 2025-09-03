@@ -252,7 +252,7 @@ TailwindCSS' short-hands are mostly used due to easier readability and variable 
 in the context of a linter, they can be a little tricky to handle since an arbitrary value handles a specific CSS attribute
 based on its composition: `text-[20px]` handles text size while `text-[var(--color-primary-bg)]` handles a color defined on your CSS file.
 
-Short-hands don't have the same benefit, so in this case it's handle almost completely with some alert inconsistency that don't affect your CSS generated variables or other different utility classes that don't handle colors.
+Short-hands don't have the same benefit, so in this case it's handled almost completely with some alert inconsistency that don't affect your CSS generated variables or other different utility classes that don't handle colors.
 
 - `text-primary-bg`: Detected correctly.
 - `text-primary-b`: Not uncomplete variable detection. Won't throw an error.
