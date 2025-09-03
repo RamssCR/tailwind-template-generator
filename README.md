@@ -28,6 +28,7 @@ scales to align with the library's naming conventions for CSS variables.
 - [TypeScript](#typescript)
 - [Tests](#tests)
 - [Contributions](#contributions)
+- [Changelog](#changelog)
 
 ## Installation
 Before installing the library you must have the following dependencies installed:
@@ -282,3 +283,7 @@ All contributions are welcome to the `tailwind-template-generator` library, keep
 - Create tests for your integration/fix.
 - Follow the library's code conventions.
 - Open a PR requesting changes.
+
+## Changelog
+Wanna have a look at our `CHANGELOG` to see a timeline of TTG's changes? Visit our GitHub repository's
+[CHANGELOG](https://github.com/RamssCR/tailwind-template-generator/blob/develop/CHANGELOG.md).
