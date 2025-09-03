@@ -24,7 +24,7 @@ scales to align with the library's naming conventions for CSS variables.
 - [YAML Files](#yaml-files)
 - [W3C Design Tokens](#w3c-design-tokens)
 - [CLI](#cli)
-- [Stylelinter Plugin](#stylelint-plugin)
+- [Stylelinter Plugin](#stylelinter-plugin)
 - [TypeScript](#typescript)
 - [Tests](#tests)
 - [Contributions](#contributions)
@@ -196,7 +196,7 @@ This command apply the same action as above, this command will only apply to JSO
 > [!NOTE]
 > This command is only for W3C Design Tokens format. If used with `generate`, it won't generate the CSS file due to schema insconsistency.
 
-## Stylelint Plugin
+## Stylelinter Plugin
 `tailwind-template-generator` (from version 1.3.0) now includes a stylelint plugin that can be added to your ESLint configuration file (for both JavaScript and TypeScript), which validates that your JSX file uses the variables declared on
 your CSS file generated from the library's CLI (or even your own CSS file with variables for tailwind 4).
 
@@ -243,9 +243,9 @@ you try using a built-in tailwind color (e.g. `text-red-500`, `bg-teal-600`) and
 For example: If your CSS file contains a variable named `--color-primary-bg`, adding it as an arbitrary class will be
 handle correctly.
 
-`bg-[var(--color-primary-bg)]`: Won't throw an (ESLint) error.
-`bg-[var(--color-primary-b)]`: Uncomplete naming, variable not on your CSS file, will throw an error.
-`bg-[var(--color-primary-bgf)]`: Extra character (possibly a typo), not on your CSS file, will throw an error.
+- `bg-[var(--color-primary-bg)]`: Won't throw an (ESLint) error.
+- `bg-[var(--color-primary-b)]`: Uncomplete naming, variable not on your CSS file, will throw an error.
+- `bg-[var(--color-primary-bgf)]`: Extra character (possibly a typo), not on your CSS file, will throw an error.
 
 ### Short-hand limitations
 TailwindCSS' short-hands are mostly used due to easier readability and variable recognition thanks to `postcss`. However
