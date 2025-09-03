@@ -79,7 +79,6 @@ describe('stylelinter plugin', () => {
   beforeEach(() => {
     vi.resetAllMocks()
 
-    // Mock CSS parsing
     /** @type {PostCSSRoot} */
     const mockRoot = {
       walkDecls: vi.fn((callback) => {
