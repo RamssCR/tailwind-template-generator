@@ -20,6 +20,7 @@ export default defineConfig({
       exclude: [
         'test/**',
         'lib/index.js',
+        'lib/plugins/index.js',
         'bin/index.js',
         '**/*.config.js',
         'scripts/**',
