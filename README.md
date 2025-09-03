@@ -24,14 +24,15 @@ scales to align with the library's naming conventions for CSS variables.
 - [YAML Files](#yaml-files)
 - [W3C Design Tokens](#w3c-design-tokens)
 - [CLI](#cli)
+- [ESLint Plugin](#eslint-plugin)
 - [TypeScript](#typescript)
 - [Tests](#tests)
 - [Contributions](#contributions)
+- [Changelog](#changelog)
 
 ## Installation
 Before installing the library you must have the following dependencies installed:
 - `tailwindcss`: Preferably TailwindCSS 4.
-- `stylelint`: Latest version.
 
 Install the library by running the following command on your console:
 
@@ -195,6 +196,73 @@ This command apply the same action as above, this command will only apply to JSO
 > [!NOTE]
 > This command is only for W3C Design Tokens format. If used with `generate`, it won't generate the CSS file due to schema insconsistency.
 
+## ESLint Plugin
+`tailwind-template-generator` (from version 1.3.0) includes an ESLint plugin that can be added to your configuration file (works for both JavaScript and TypeScript), which validates that your JSX file uses the variables declared on your CSS file generated from the library's CLI (or even your own CSS file with variables for tailwind 4 if you only need the ESLint plugin).
+
+> [!NOTE]
+> Currently, this plugin only validates a file named `index.css` located inside your `/src` folder.
+
+You can add it to your `eslint.config.*` file this way:
+```TS
+// eslint.config.js
+
+// @ts-check
+import js from '@eslint/js'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import { globalIgnores } from 'eslint/config'
+import tailwindTokens from 'tailwind-template-generator'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{jsx,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'tailwind-tokens': tailwindTokens
+    },
+    rules: {
+      'tailwind-tokens/no-builtin-tailwind-colors': 'error'
+    }
+  },
+])
+```
+
+### How it works
+This plugin validates your CSS file and parses it using the `postcss` library under the hood, it throws an alert if
+you try using a built-in tailwind color (e.g. `text-red-500`, `bg-teal-600`) and handles arbitrary values consistently.
+
+For example: If your CSS file contains a variable named `--color-primary-bg`, adding it as an arbitrary class will be
+handle correctly.
+
+- `bg-[var(--color-primary-bg)]`: Won't throw an (ESLint) error.
+- `bg-[var(--color-primary-b)]`: Incomplete naming, variable not on your CSS file, will throw an error.
+- `bg-[var(--color-primary-bgf)]`: Extra character (possibly a typo), not on your CSS file, will throw an error.
+
+### Shorthand limitations
+TailwindCSS' shorthands are mostly used due to easier readability and variable recognition thanks to `postcss`. However,
+in a linter context they’re trickier to validate. Arbitrary values can be mapped directly (e.g. `text-[20px]` vs `text-[var(--color-primary-bg)]`), 
+but shorthands require inference.
+
+Shorthands don't have the same benefit, so in this case it's handled almost completely with some alert inconsistencies that won't affect 
+your CSS generated variables or other different utility classes unrelated to colors.
+
+- `text-primary-bg`: Detected correctly.
+- `text-primary-b`: Not incomplete variable detection. Won't throw an error.
+- `text-primary-bgf`: Typo detected correctly. Throws an error.
+- `text-primary-bg/10`: Opacity modifiers detected correctly.
+- `text-primary-acce`: Typo for "accent" word. Detects incomplete variable naming in this case.
+
+> [!NOTE]
+> Utility classes unrelated to colors (like `bg-no-repeat`, `text-lg`, `text-center`, `border-4`) are safely whitelisted to avoid false positives.
+
 ## TypeScript
 This library was made entirely using vanilla JS but also using a `tsconfig.json` file to generate all `.d.ts` files needed if the library provides an in-code resource (in the future).
 
@@ -215,3 +283,7 @@ All contributions are welcome to the `tailwind-template-generator` library, keep
 - Create tests for your integration/fix.
 - Follow the library's code conventions.
 - Open a PR requesting changes.
+
+## Changelog
+Wanna have a look at our `CHANGELOG` to see a timeline of TTG's changes? Visit our GitHub repository's
+[CHANGELOG](https://github.com/RamssCR/tailwind-template-generator/blob/develop/CHANGELOG.md).
