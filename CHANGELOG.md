@@ -7,7 +7,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [1.3.0] - 2025-09-03
 ### Added
-- Included a stylelinter for built-in tailwind colors validation.
+- Included a ESLint plugin for built-in tailwind colors detection.
 - Added type declaration source for plugin detection (for TypeScript, mostly).
 - Updated the `README` file with the respective new integrations.
 
