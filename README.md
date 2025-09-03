@@ -32,7 +32,6 @@ scales to align with the library's naming conventions for CSS variables.
 ## Installation
 Before installing the library you must have the following dependencies installed:
 - `tailwindcss`: Preferably TailwindCSS 4.
-- `stylelint`: Latest version.
 
 Install the library by running the following command on your console:
 
